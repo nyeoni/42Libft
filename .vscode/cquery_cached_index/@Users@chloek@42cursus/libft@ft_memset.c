@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 15:56:08 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 16:56:20 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/04 14:22:20 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/04 23:08:20 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
+// #include <stdio.h>
 
-// void *memcpy(void *dest, const void *src, size_t len)
-// {
-//     return NULL;
-// }
-
-int main(void)
+void    *ft_memset(void *dst, int value, size_t n)
 {
-    int arr[3];
-    int src[3] = {1,2,3};
-    memcpy(arr, src, 3 * sizeof(int));
+    size_t i;
+    i = 0;
 
-    for (int i = 0; i < 3; i++)
+	while (i < n)
     {
-        printf("%d ", src[i]);
+        *((char *)dst+i) = value;
+        i++;    
     }
-    //qprintf("%p\n", arr);
+    return dst;
 }
+
+
+// int main(void)
+// {
+//     char arr[] = "abcdefgh";
+//     printf("%s\n", arr);
+
+//     ft_memset(arr, 'c', 5 * sizeof(char));
+
+//     printf("%s\n", arr);
+// }

@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 15:56:08 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 16:56:20 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/04 17:00:36 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/04 23:30:24 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+#include "libft.h"
 
-// void *memcpy(void *dest, const void *src, size_t len)
-// {
-//     return NULL;
-// }
-
-int main(void)
+void ft_bzero(void *src, size_t n)
 {
-    int arr[3];
-    int src[3] = {1,2,3};
-    memcpy(arr, src, 3 * sizeof(int));
-
-    for (int i = 0; i < 3; i++)
+    int i;
+    i = 0;
+    while (i < n)
     {
-        printf("%d ", src[i]);
+        *((char *)src + i) = 0;
+        i++;
     }
-    //qprintf("%p\n", arr);
 }
+
+// int main(void)
+// {
+//     char arr[] = "abcdefgh";
+//     printf("%s\n", arr);
+
+//     bzero(arr, 5 * sizeof(char));
+
+//     printf("%s\n", arr);
+//     for (int i = 0; i <  8; i++)
+//     {
+//         printf("%c ", arr[i]);
+//     }
+// }
