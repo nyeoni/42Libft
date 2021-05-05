@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:00:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:30:24 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/05 21:35:06 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/05 22:12:17 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-#include "libft.h"
+// #include "libft.h"
+// #include <stdlib.h>
 
-void ft_bzero(void *src, size_t n)
-{
-    size_t i;
-    i = 0;
-
-    while (i < n)
-    {
-        *((char *)src + i) = 0;
-        i++;
-    }
-}
-
-// int main(void)
+// char *ft_substr(char const *s, unsigned int start, size_t len)
 // {
-//     char arr[] = "abcdefgh";
-//     printf("%s\n", arr);
-
-//     bzero(arr, 5 * sizeof(char));
-
-//     printf("%s\n", arr);
-//     for (int i = 0; i <  8; i++)
-//     {
-//         printf("%c ", arr[i]);
-//     }
+//     return 0;
 // }

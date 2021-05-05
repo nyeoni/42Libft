@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 // #include <stdio.h>
+// #include <string.h>
 #include "libft.h"
 
 void *ft_memccpy(void *dst, const void *src, int c, size_t n)
@@ -20,26 +21,41 @@ void *ft_memccpy(void *dst, const void *src, int c, size_t n)
 
     while (i < n)
     {
-        if (*((char *)src + i) != (char)c)
-            *((char *)dst + i) = *((char *)src + i);
+        if (*((unsigned char *)src + i) != (unsigned char)c)
+            *((unsigned char *)dst + i) = *((unsigned char *)src + i);
         else
+        {
+            *((unsigned char *)dst + i) = *((unsigned char *)src + i);
+            i++;
             break;
+        }
         i++;
     } 
-    return dst;
+
+    if (i != n)
+        return ((unsigned char *)dst + i);
+    else
+        return 0;
 }
 
 // int main(void)
 // {
-//     char arr[3] = "000";
-//     char src[3] = "123";
-//     ft_memccpy(arr, src, '2', 3 * sizeof(int));
+//     char	src[] = "test basic du memccpy !";
+// 	char	buff1[22];
+
+//     memset(buff1, 0, sizeof(buff1));
+// 	char	*r1 = memccpy(buff1, src, 'm', 22);
+//     char	*r2 = ft_memccpy(buff1, src, 'm', 22);
 
 //     for (int i = 0; i < 3; i++)
 //     {
-//         // printf("%c ", src[i]);
-//         // printf("%c ", arr[i]);
+//         printf("r1: %c ", r1[i]);
 //     }
-//     printf("%d\n", sizeof(char *));
-//     //qprintf("%p\n", arr);
+
+//     for (int i = 0; i < 3; i++)
+//     {
+//         printf("r2 : %c ", r2[i]);
+//     }
+    // printf("%d\n", sizeof(char *));
+    // //qprintf("%p\n", arr);
 // }

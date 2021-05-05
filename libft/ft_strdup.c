@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:00:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:30:24 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/05 21:17:03 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/05 21:30:13 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #include "libft.h"
+#include <stdlib.h>
 
-void ft_bzero(void *src, size_t n)
+char *ft_strdup(const char *s1)
 {
-    size_t i;
-    i = 0;
-
-    while (i < n)
+    int size;
+    char *res;
+    size = ft_strlen(s1);
+    
+    if (!(res = malloc(size + 1)))
+        return 0;
+    
+    size = 0;
+    while (s1[size])
     {
-        *((char *)src + i) = 0;
-        i++;
+        res[size] = s1[size];
+        size++;
     }
+    res[size] = '\0';
+    return res;
 }
-
-// int main(void)
-// {
-//     char arr[] = "abcdefgh";
-//     printf("%s\n", arr);
-
-//     bzero(arr, 5 * sizeof(char));
-
-//     printf("%s\n", arr);
-//     for (int i = 0; i <  8; i++)
-//     {
-//         printf("%c ", arr[i]);
-//     }
-// }

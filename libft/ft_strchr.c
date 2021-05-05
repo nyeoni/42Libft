@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:00:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:30:24 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/05 18:25:51 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/05 18:34:01 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #include "libft.h"
 
-void ft_bzero(void *src, size_t n)
+char *ft_strchr(const char *src, int c)
 {
-    size_t i;
+    int i;
     i = 0;
-
-    while (i < n)
+    
+    while (src[i])
     {
-        *((char *)src + i) = 0;
+        if (src[i] == (char)c)
+            return (char *)(&src[i]);
         i++;
     }
+    if (c == 0)
+        return (char *)(&src[i]);
+        
+    return 0;
 }
-
-// int main(void)
-// {
-//     char arr[] = "abcdefgh";
-//     printf("%s\n", arr);
-
-//     bzero(arr, 5 * sizeof(char));
-
-//     printf("%s\n", arr);
-//     for (int i = 0; i <  8; i++)
-//     {
-//         printf("%c ", arr[i]);
-//     }
-// }

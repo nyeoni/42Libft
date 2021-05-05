@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:00:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:30:24 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/05 20:49:59 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/05 21:16:19 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-#include "libft.h"
+#include <stdlib.h>
 
-void ft_bzero(void *src, size_t n)
+void *ft_calloc(size_t count, size_t size)
 {
     size_t i;
+    void *res;
+    
+    if(!(res = (void *)malloc(size * count)))
+        return 0;
     i = 0;
-
-    while (i < n)
+    while (i < size * count)
     {
-        *((char *)src + i) = 0;
+        *((char *)res + i) = '\0';
         i++;
     }
+    return res;
 }
-
-// int main(void)
-// {
-//     char arr[] = "abcdefgh";
-//     printf("%s\n", arr);
-
-//     bzero(arr, 5 * sizeof(char));
-
-//     printf("%s\n", arr);
-//     for (int i = 0; i <  8; i++)
-//     {
-//         printf("%c ", arr[i]);
-//     }
-// }
