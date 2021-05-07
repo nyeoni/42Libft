@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 21:35:06 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/07 16:59:12 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/07 18:31:07 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/07 20:33:52 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-
-char *ft_substr(char const *str, unsigned int start, size_t len)
+int check_sep(char s, char c)
 {
-    char *tmp;
-    size_t i;
-
-    if (!str)
-        return 0;
-    
-    if(!(tmp = malloc(len + 1)))
-        return 0;
+    int i;
     i = 0;
+
+    if (s == c)
+        return 1;
+    return 0;
+}
+int get_address_cnt(char const *s, char c)
+{
+    int cnt;
     
-    while (i < len && start < ft_strlen(str))
+    cnt = 0;
+    while (*s)
     {
-        tmp[i] = str[start + i];
-        i++;
+        if (*s == c)
+        {
+            s++;
+            while (*s == )
+        }
     }
-    tmp[i] ='\0';
-    return tmp;
+}
+
+char **ft_split(char const *s, char c)
+{
+    char **res;
+    
 }
