@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 18:31:07 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/09 00:02:04 by nkim             ###   ########.fr       */
+/*   Created: 2021/05/09 00:04:39 by nkim              #+#    #+#             */
+/*   Updated: 2021/05/09 00:07:02 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_sep(char s, char c)
+#include "libft.h"
+
+size_t ft_strlcpy(char * dst, const char *src, size_t dstsize)
 {
-    int i;
-    i = 0;
+    size_t	i;
 
-    if (s == c)
-        return 1;
-    return 0;
+	i = 0;
+    if (!dst || !src)
+        return 0;
+	if (dstsize > 0)
+	{
+		while (i < dstsize - 1 && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	while (src[i])
+		i++;
+	return (i);
 }
-// int get_address_cnt(char const *s, char c)
-// {
-//     int cnt;
-    
-//     cnt = 0;
-//     while (*s)
-//     {
-//         if (*s == c)
-//         {
-//             s++;
-//             while (*s == )
-//         }
-//     }
-// }
-
-// char **ft_split(char const *s, char c)
-// {
-//     char **res;
-    
-// }
