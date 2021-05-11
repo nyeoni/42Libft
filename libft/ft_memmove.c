@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 22:56:37 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:07:09 by nkim             ###   ########.fr       */
+/*   Updated: 2021/05/10 14:55:46 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 // #include <string.h>
 // #include <stdio.h>
 
-void *ft_memmove(void *dst, void *src, size_t n)
+void *ft_memmove(void *dst, const void *src, size_t n)
 {
     size_t i;
     i = 0;
