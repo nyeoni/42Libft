@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 15:36:34 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/10 16:08:35 by nkim             ###   ########.fr       */
+/*   Updated: 2021/05/12 21:28:12 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int is_isspace(char c)
     else
         return 0;
 }
+
 int ctoi(char c)
 {
     int res;
@@ -51,19 +52,3 @@ int ft_atoi(const char *str)
     }
     return is_minus * res;
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-//     printf("real : %d\n", atoi(" \t   -1234"));
-//     printf("mine : %d\n", ft_atoi(" \t\v\f  -1234"));
-//     printf("real : %d\n", atoi("-0001a234"));
-//     printf("mine : %d\n", ft_atoi("-0001a234"));
-//     printf("real : %d\n", atoi("0-001234"));
-//     printf("mine : %d\n", ft_atoi("0-001234"));
-//     printf("real : %d\n", atoi("--1234"));
-//     printf("mine : %d\n", ft_atoi("--1234"));
-//     printf("real : %d\n", atoi("+1234"));
-//     printf("mine : %d\n", ft_atoi("+1234"));
-// }
