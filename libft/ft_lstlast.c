@@ -6,17 +6,17 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 03:05:34 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/11 03:06:40 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/19 19:06:30 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-    if (!lst)
-        return 0;
-    while (lst -> next)
-        lst = lst -> next;
-    return lst;
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

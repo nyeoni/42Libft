@@ -6,17 +6,17 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 02:53:59 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/11 03:00:48 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/19 19:00:30 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    t_list *tmp;
-    
-    tmp = *lst;
-    *lst = new;
-    new -> next = tmp;
+	t_list	*tmp;
+
+	tmp = *lst;
+	*lst = new;
+	new->next = tmp;
 }

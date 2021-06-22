@@ -6,14 +6,14 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 01:29:35 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/10 01:31:26 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/19 19:16:18 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    if (c >= 'a' && c <= 'z')
-        return c-32;
-    else
-        return c;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
 }

@@ -6,19 +6,18 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:22:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/05 18:33:28 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/22 17:56:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    size_t len;
-    len = 0;
+	size_t	len;
 
-    while (s[len])
-        len++;
-    
-    return len;
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }

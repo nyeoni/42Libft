@@ -6,14 +6,15 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 01:23:33 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/10 01:25:51 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/19 18:38:49 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    if ((c >= 'a' && c <= 'z') ||  (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
-        return 1;
-    else
-        return 0;
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+		(c >= '0' && c <= '9'))
+		return (1);
+	else
+		return (0);
 }
