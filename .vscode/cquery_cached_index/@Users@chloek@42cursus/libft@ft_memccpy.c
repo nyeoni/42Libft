@@ -6,40 +6,28 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:10:01 by nkim              #+#    #+#             */
-/*   Updated: 2021/05/04 23:09:01 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/23 22:36:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #include "libft.h"
 
-void *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-    size_t i;
-    i = 0;
+	size_t	i;
+	int		flag;
 
-    while (i < n)
-    {
-        if (*((char *)src + i) != (char)c)
-            *((char *)dst + i) = *((char *)src + i);
-        else
-            break;
-        i++;
-    } 
-    return dst;
+	i = 0;
+	flag = 0;
+	while (i < n && !flag)
+	{
+		*((unsigned char *)dst + i) = *((unsigned char *)src + i);
+		if (*((unsigned char *)src + i) == (unsigned char)c)
+			flag = 1;
+		i++;
+	}
+	if (flag)
+		return ((unsigned char *)dst + i);
+	else
+		return (0);
 }
-
-// int main(void)
-// {
-//     char arr[3] = "000";
-//     char src[3] = "123";
-//     ft_memccpy(arr, src, '2', 3 * sizeof(int));
-
-//     for (int i = 0; i < 3; i++)
-//     {
-//         // printf("%c ", src[i]);
-//         // printf("%c ", arr[i]);
-//     }
-//     printf("%d\n", sizeof(char *));
-//     //qprintf("%p\n", arr);
-// }

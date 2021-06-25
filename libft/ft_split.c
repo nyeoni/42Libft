@@ -6,57 +6,92 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 18:31:07 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/22 19:28:38 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/25 02:31:01 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		get_address_cnt(char const *s, char c)
+int		*get_string_cnt(char const *str, char c, int address_len)
+{
+	int	*result;
+	int	cnt;
+	int	i;
+
+	i = 0;
+	if (!(result = (int *)malloc(sizeof(int) * address_len)))
+		return (0);
+	while (*str)
+	{
+		cnt = 0;
+		while (*str != c && *str)
+		{
+			cnt++;
+			str++;
+		}
+		if (cnt != 0)
+		{
+			result[i] = cnt;
+			i++;
+		}
+		if (!(*str))
+			break ;
+		str++;
+	}
+	return (result);
+}
+
+int		get_address_cnt(char const *str, char c)
 {
 	int	cnt;
 
 	cnt = 0;
-	while (*s)
+	if (!c)
+		return (1);
+	while (*str)
 	{
-		if (*(s++) != c)
+		if (*str != c)
 		{
 			cnt++;
-			while ((*s != c) && *s)
-				s++;
-			continue ;
+			while (*str && *str != c)
+				str++;
+			str--;
 		}
-		s++;
+		str++;
 	}
 	return (cnt);
 }
 
-int		*get_string_cnt(char const *s, char c, int address_cnt)
+void	put_string(char **result, char const *str, char c, int address_len)
 {
-	int	*res;
-	int	*tmp;
-	int	cnt;
+	int	i;
+	int	flag;
+	int	j;
 
-	if (!(res = (int *)malloc(sizeof(int) * address_cnt)))
-		return (0);
-	tmp = res;
-	while (*s)
+	i = 0;
+	while (*str && i < address_len)
 	{
-		cnt = 0;
-		if (*s != c)
+		flag = 0;
+		j = 0;
+		while (*str != c && *str)
 		{
-			while ((*s != c) && *(s++))
-				cnt++;
-			*tmp = cnt;
-			tmp++;
-			continue ;
+			flag = 1;
+			result[i][j] = *str;
+			j++;
+			str++;
 		}
-		s++;
+		if (flag)
+		{
+			result[i][j] = 0;
+			i++;
+		}
+		if (!(*str))
+			break ;
+		str++;
 	}
-	return (res);
 }
 
-void	free_all(char **res)
+void	free_all(char **res, int *string_len)
 {
 	int	i;
 
@@ -68,78 +103,35 @@ void	free_all(char **res)
 		i++;
 	}
 	free(res);
+	free(string_len);
 	res = 0;
-}
-
-void	put_string(char const *s, char c, char **res)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (*s)
-	{
-		if (*s != c)
-		{
-			j = 0;
-			while ((*s != c) && *s)
-			{
-				res[i][j] = *(s++);
-				j++;
-			}
-			i++;
-			continue ;
-		}
-		s++;
-	}
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
-	int		address_cnt;
-	int		*string_cnt;
+	char	**result;
+	int		address_len;
+	int		*string_len;
 	int		i;
 
-	address_cnt = get_address_cnt(s, c);
-	string_cnt = get_string_cnt(s, c, address_cnt);
-	if (!(res = (char **)malloc(sizeof(char *) * address_cnt)))
+	if (!s)
 		return (0);
-	i = 0;
-	while (i < address_cnt)
+	address_len = get_address_cnt(s, c);
+	string_len = get_string_cnt(s, c, address_len);
+	if (!string_len ||
+		!(result = (char **)malloc(sizeof(char *) * (address_len + 1))))
+		return (0);
+	ft_memset(result, 0, sizeof(char *) * (address_len + 1));
+	i = 0 - 1;
+	while (++i < address_len && string_len[0])
 	{
-		if (!(res[i] = (char *)malloc(sizeof(char) * (string_cnt[i] + 1))))
+		if (!(result[i] = (char *)malloc(sizeof(char) * (string_len[i] + 1))))
 		{
-			free_all(res);
+			free_all(result, string_len);
 			return (0);
 		}
-        i++;
 	}
-	put_string(s, c, res);
-	return (res);
-}
-void	ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-int main() {
-    char	**tabstr;
-	int		i;
-    i = 0;
-    if (!(tabstr = ft_split("          ", ' ')))
-        ft_print_result("NULL");
-    else
-    {
-        while (tabstr[i] != NULL)
-        {
-            ft_print_result(tabstr[i]);
-            write(1, "\n", 1);
-            i++;
-        }
-    }
+	free(string_len);
+	put_string(result, s, c, address_len);
+	return (result);
 }
