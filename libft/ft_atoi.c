@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 15:36:34 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/27 19:00:25 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/28 23:25:09 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ int	ctoi(char c)
 	return (res);
 }
 
-int detect_flow(int is_minus)
+int	detect_flow(int is_minus)
 {
 	if (is_minus == -1)
-		return 0;
+		return (0);
 	else
-		return -1;
+		return (-1);
 }
 
 int	ft_atoi(const char *str)
 {
 	long long	res;
 	long long	tmp;
-	int	is_minus;
-	int	i;
+	int			is_minus;
+	int			i;
 
 	i = 0;
 	is_minus = 1;
@@ -54,13 +54,13 @@ int	ft_atoi(const char *str)
 			is_minus = -1;
 	}
 	if (!ft_isdigit(str[i]))
-		return 0;
+		return (0);
 	res = 0;
 	while (ft_isdigit(str[i]))
 	{
 		tmp = res * 10 + ctoi(str[i++]);
 		if (tmp < res || (tmp == 0x7FFFFFFFFFFFFFFF && is_minus == 1))
-			return detect_flow(is_minus);
+			return (detect_flow(is_minus));
 		res = tmp;
 	}
 	return (int)(is_minus * res);
