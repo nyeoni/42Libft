@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:20:26 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/28 23:26:12 by nkim             ###   ########.fr       */
+/*   Updated: 2021/06/28 23:26:57 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0 - 1;
 	while (start + (++i) <= last)
 		res[i] = s1[start + i];
-	
 	res[i] = '\0';
 	return (res);
 }
