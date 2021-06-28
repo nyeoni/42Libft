@@ -4,3 +4,4 @@ images/
 *.dSYM
 a.out
 .vscode
+.idea
