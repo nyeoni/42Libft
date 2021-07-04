@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:42:11 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/05 05:07:27 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/05 05:11:40 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,24 @@ void free_ptr(char **ptr)
 	*ptr = NULL;
 }
 
-void	manage_line(char **line, char **file_rest)
+void	manage_line(char *buffer, char **line, char **file_rest)
 {
 	char *next_sp;
 	char *tmp;
 
-	next_sp = ft_strchr(*line, '\n');
+	next_sp = ft_strchr(buffer, '\n');
 	// printf("buffer: %s\n", buffer);
-
-	tmp = ft_strndup(*line, next_sp - *line);	
-
+	if (!*line)
+		*line = ft_strndup(buffer, next_sp - buffer);
+	else
+	{
+		tmp = ft_strndup(buffer, next_sp - buffer);
+		*line = ft_strjoin(*line, tmp);
+		free_ptr(&tmp);
+	}
 	if (*file_rest)
 		free_ptr(file_rest);
 	*file_rest = ft_strndup(next_sp + 1, ft_strlen(next_sp + 1));
-	free_ptr(line);
-	*line = tmp;
 }
 
 int		put_line(int fd, char *buffer, char **line, char **file_rest)
@@ -99,21 +102,22 @@ int		get_next_line(int fd, char **line)
 		free_ptr(&file_rest[fd]);
 	}
 		
-	if (!*line)
-		*line = ft_strndup(buffer, ft_strlen(buffer));
 	while (!(ft_strchr(buffer, '\n')))
-	{		
+	{
+		if (!*line)
+			*line = ft_strndup(buffer, ft_strlen(buffer));
+		else
+			*line = ft_strjoin(*line, buffer);
 		ft_memset(buffer, 0, BUFFER_SIZE);
 		r_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (r_bytes == -1)
 			return -1;
 		else if (r_bytes == 0)
 			return 0;
-		*line = ft_strjoin(*line, buffer);
 	}
 	// 결과 도출해주는 함수
 	// manage_line 으로 가는 경우 : 1. \n 을 찾았을 때 2. fd 를 읽었을 때 0이 나왔을 경우
-	manage_line(line, &(file_rest[fd]));
+	manage_line(buffer, line, &(file_rest[fd]));
 	return 1;
 
 	// if (file_rest[fd] && (next_sp = ft_strchr(file_rest[fd], '\n')))
