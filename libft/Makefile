@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2021/06/28 19:08:33 by nkim             ###   ########.fr        #
+#    Updated: 2021/07/04 19:51:16 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,12 @@ fclean : clean
 
 re : fclean all
 
-bonus :
-	make WITH_BONUS=1 all
+bonus : $(NAME)
+	make WITH_BONUS=1
 
 $(NAME) : $(OBJECTS)
 	ar $(AFLAGS) $@ $?
+
 %.o : %.c
 	$(CC) $(CFLAGS) -c $?
 	
