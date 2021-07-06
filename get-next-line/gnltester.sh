@@ -170,3 +170,10 @@ cd gnlTester
 # make b # 보너스 파트만 실행
 make a # 필수와 보너스 모두 실행
 cd ..
+
+rm -rf 42testers-gnl
+rm -rf gnl-lover
+rm -rf gnlkiller
+rm -rf gnlkiller2
+rm -rf Test-42
+rm -rf gnlTester
