@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:25:54 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/06 20:26:26 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/20 18:48:49 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ char	*ft_strchr(const char *src, int c)
 	while (src[i])
 	{
 		if (src[i] == (char)c)
-			return (char *)(&src[i]);
+			return ((char *)(&src[i]));
 		i++;
 	}
 	if (c == 0)
-		return (char *)(&src[i]);
+		return ((char *)(&src[i]));
 	return (0);
 }
 

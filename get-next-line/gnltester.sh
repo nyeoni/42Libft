@@ -35,118 +35,118 @@ REAL_PATH=$(cd $(dirname $0) && cd ${PROJ_PATH} && pwd)
 echo 프로젝트 위치: $REAL_PATH
 cd $REAL_PATH
 
-echo "====================================="
-echo""
-echo "   ## 42testers-gnl test will start "
-echo""
-echo "====================================="
-read -p "  V^^v 42SEOUL v^^V"
-echo "====================================="
-echo ""
+# echo "====================================="
+# echo""
+# echo "   ## 42testers-gnl test will start "
+# echo""
+# echo "====================================="
+# read -p "  V^^v 42SEOUL v^^V"
+# echo "====================================="
+# echo ""
 
-SECONDS=0;
-while sleep .5 && ((SECONDS <= 5)); do
-    printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
-done
-printf '\n'
+# SECONDS=0;
+# while sleep .5 && ((SECONDS <= 5)); do
+#     printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
+# done
+# printf '\n'
 
-## 42testers-gnl
-git clone https://github.com/Mazoise/42TESTERS-GNL.git 42testers-gnl
-cd 42testers-gnl
-bash all_tests_with_bonus.sh
-cd ..
+# ## 42testers-gnl
+# git clone https://github.com/Mazoise/42TESTERS-GNL.git 42testers-gnl
+# cd 42testers-gnl
+# bash all_tests_with_bonus.sh
+# cd ..
 
-echo "====================================="
-echo""
-echo "   ## gnl_lover test will start "
-echo""
-echo "====================================="
-read -p "  V^^v 42SEOUL v^^V"
-echo "====================================="
-echo ""
+# echo "====================================="
+# echo""
+# echo "   ## gnl_lover test will start "
+# echo""
+# echo "====================================="
+# read -p "  V^^v 42SEOUL v^^V"
+# echo "====================================="
+# echo ""
 
-SECONDS=0;
-while sleep .5 && ((SECONDS <= 5)); do
-    printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
-done
-printf '\n'
-### gnl_lover
-git clone https://github.com/charMstr/GNL_lover.git gnl-lover
-cp get_next_line* gnl-lover/copy_in_here_GNL_files
-cd gnl-lover
-sh GNL_lover.sh
-cd ..
+# SECONDS=0;
+# while sleep .5 && ((SECONDS <= 5)); do
+#     printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
+# done
+# printf '\n'
+# ### gnl_lover
+# git clone https://github.com/charMstr/GNL_lover.git gnl-lover
+# cp get_next_line* gnl-lover/copy_in_here_GNL_files
+# cd gnl-lover
+# sh GNL_lover.sh
+# cd ..
 
-echo "====================================="
-echo""
-echo "   ## gnlkiller test will start "
-echo""
-echo "====================================="
-read -p "  V^^v 42SEOUL v^^V"
-echo "====================================="
-echo ""
+# echo "====================================="
+# echo""
+# echo "   ## gnlkiller test will start "
+# echo""
+# echo "====================================="
+# read -p "  V^^v 42SEOUL v^^V"
+# echo "====================================="
+# echo ""
 
-SECONDS=0;
-while sleep .5 && ((SECONDS <= 5)); do
-    printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
-done
-printf '\n'
+# SECONDS=0;
+# while sleep .5 && ((SECONDS <= 5)); do
+#     printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
+# done
+# printf '\n'
 
-### gnlkiller
-git clone https://github.com/DontBreakAlex/gnlkiller.git
-cd gnlkiller
-cp ../get_next_line.c .
-cp ../get_next_line_utils.c .
-cp ../get_next_line.h .
-./run.sh;
-cd ..
-# #############???? what is this tester.      지우자. 뭔지 모르겠다.
-echo "====================================="
-echo""
-echo "   ## gnlkiller2 test will start "
-echo""
-echo "====================================="
-read -p "  V^^v 42SEOUL v^^V"
-echo "====================================="
-echo ""
+# ### gnlkiller
+# git clone https://github.com/DontBreakAlex/gnlkiller.git
+# cd gnlkiller
+# cp ../get_next_line.c .
+# cp ../get_next_line_utils.c .
+# cp ../get_next_line.h .
+# ./run.sh;
+# cd ..
+# # #############???? what is this tester.      지우자. 뭔지 모르겠다.
+# echo "====================================="
+# echo""
+# echo "   ## gnlkiller2 test will start "
+# echo""
+# echo "====================================="
+# read -p "  V^^v 42SEOUL v^^V"
+# echo "====================================="
+# echo ""
 
-SECONDS=0;
-while sleep .5 && ((SECONDS <= 5)); do
-    printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
-done
-printf '\n'
+# SECONDS=0;
+# while sleep .5 && ((SECONDS <= 5)); do
+#     printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
+# done
+# printf '\n'
 
-### gnlkiller2
-git clone https://github.com/Sherchryst/gnlkiller.git gnlkiller2
-cd gnlkiller2
-cp ../get_next_line.c .
-cp ../get_next_line_utils.c .
-cp ../get_next_line.h .
-chmod +x test.sh
-./test.sh;
-cd ..
+# ### gnlkiller2
+# git clone https://github.com/Sherchryst/gnlkiller.git gnlkiller2
+# cd gnlkiller2
+# cp ../get_next_line.c .
+# cp ../get_next_line_utils.c .
+# cp ../get_next_line.h .
+# chmod +x test.sh
+# ./test.sh;
+# cd ..
 # ###   ????왠 안됨
-echo "====================================="
-echo""
-echo "   ## TEST-42 test will start "
-echo""
-echo "====================================="
-read -p "  V^^v 42SEOUL v^^V"
-echo "====================================="
-echo ""
+# echo "====================================="
+# echo""
+# echo "   ## TEST-42 test will start "
+# echo""
+# echo "====================================="
+# read -p "  V^^v 42SEOUL v^^V"
+# echo "====================================="
+# echo ""
 
-SECONDS=0;
-while sleep .5 && ((SECONDS <= 5)); do
-    printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
-done
-printf '\n'
+# SECONDS=0;
+# while sleep .5 && ((SECONDS <= 5)); do
+#     printf '\r%s: %2d' "Testing will start soon" "$((5-SECONDS))"
+# done
+# printf '\n'
 
-### TEST-42
-git clone https://github.com/PandaCoustik/Test-42.git
-cd Test-42/test_gnl
-chmod +x test.sh
-./test.sh
-cd ../..
+# ### TEST-42
+# git clone https://github.com/PandaCoustik/Test-42.git
+# cd Test-42/test_gnl
+# chmod +x test.sh
+# ./test.sh
+# cd ../..
 
 echo "====================================="
 echo""

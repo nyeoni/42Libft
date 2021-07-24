@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 17:21:50 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/05 18:24:47 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/20 19:37:00 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*ft_realloc(char *src, size_t n);
 char	*ft_strndup(const char *s1, size_t n);
-int		get_next_line(int fd, char **line);
+char *		get_next_line(int fd);
 
 #endif
