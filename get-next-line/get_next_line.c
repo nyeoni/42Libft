@@ -25,40 +25,6 @@ void	*ft_memset(void *dst, int value, size_t n)
 	return (dst);
 }
 
-/*
-** New proto
-*/
-// void	manage_line(char **file_rest,
-// 	t_gnl_manager *gnl_m, int r_bytes)
-// {
-// 	char	*next_sp;
-// 	char	*tmp;
-// 	int		i;
-
-// 	next_sp = ft_strchr(gnl_m->line, '\n');
-// 	if (r_bytes == -1 || (r_bytes == 0 && !next_sp))
-// 	{
-// 		i = 0;
-// 		while (i <= gnl_m->max_fd && (gnl_m->file_rest)[i] == NULL)
-// 			i++;
-// 		if (i == gnl_m->max_fd + 1)
-// 		{
-// 			free(gnl_m->file_rest);
-// 			gnl_m->file_rest = NULL;
-// 		}
-// 	}
-// 	if (next_sp && *(next_sp + 1))
-// 	{
-// 		*file_rest = ft_strndup(next_sp + 1, ft_strlen(next_sp + 1));
-// 		tmp = gnl_m->line;
-// 		gnl_m->line = ft_strndup(gnl_m->line, next_sp - gnl_m->line + 1);
-// 		free(tmp);
-// 	}
-// }
-
-/*
-** Old proto
-*/
 void	manage_line(char **file_rest,
 	t_gnl_manager *gnl_m, int r_bytes)
 {
@@ -78,15 +44,14 @@ void	manage_line(char **file_rest,
 			gnl_m->file_rest = NULL;
 		}
 	}
-	if (next_sp)
+	if (next_sp && *(next_sp + 1))
 	{
 		*file_rest = ft_strndup(next_sp + 1, ft_strlen(next_sp + 1));
 		tmp = gnl_m->line;
-		gnl_m->line = ft_strndup(gnl_m->line, next_sp - gnl_m->line);
+		gnl_m->line = ft_strndup(gnl_m->line, next_sp - gnl_m->line + 1);
 		free(tmp);
 	}
 }
-
 
 void	init_gnl_manager(t_gnl_manager *gnl_m, int fd)
 {
@@ -130,42 +95,7 @@ char	*init_all(char *buf, t_gnl_manager *fm, int fd)
 	return (line);
 }
 
-/*
-** New proto
-*/
-// char	*get_next_line(int fd)
-// {
-// 	static t_gnl_manager	gnl_m;
-// 	char					buffer[BUFFER_SIZE + 1];
-// 	char					*tmp;
-// 	int						r_bytes;
-
-// 	ft_memset(buffer, 0, BUFFER_SIZE + 1);
-// 	r_bytes = read(fd, buffer, BUFFER_SIZE);
-// 	if (fd < 0 || BUFFER_SIZE <= 0 || r_bytes == -1)
-// 		return (0);
-// 	gnl_m.line = init_all(buffer, &gnl_m, fd);
-// 	while (!(ft_strchr(gnl_m.line, '\n')) && r_bytes > 0)
-// 	{
-// 		ft_memset(buffer, 0, BUFFER_SIZE + 1);
-// 		r_bytes = read(fd, buffer, BUFFER_SIZE);
-// 		tmp = gnl_m.line;
-// 		gnl_m.line = ft_strjoin(gnl_m.line, buffer);
-// 		free(tmp);
-// 	}
-// 	manage_line(&(gnl_m.file_rest)[fd], &gnl_m, r_bytes);
-// 	if (r_bytes == -1 || (r_bytes == 0 && !gnl_m.line[0]))
-// 	{
-// 		free(gnl_m.line);
-// 		gnl_m.line = NULL;
-// 	}
-// 	return (gnl_m.line);
-// }
-
-/*
-** Old proto
-*/
-int	get_next_line(int fd, char **line)
+char	*get_next_line(int fd)
 {
 	static t_gnl_manager	gnl_m;
 	char					buffer[BUFFER_SIZE + 1];
@@ -186,8 +116,10 @@ int	get_next_line(int fd, char **line)
 		free(tmp);
 	}
 	manage_line(&(gnl_m.file_rest)[fd], &gnl_m, r_bytes);
-	*line = gnl_m.line;
-	if ((*line)[0])
-		r_bytes = 1;
-	return (r_bytes);
+	if (r_bytes == -1 || (r_bytes == 0 && !gnl_m.line[0]))
+	{
+		free(gnl_m.line);
+		gnl_m.line = NULL;
+	}
+	return (gnl_m.line);
 }

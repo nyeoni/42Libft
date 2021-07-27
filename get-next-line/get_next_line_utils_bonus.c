@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:25:54 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/26 23:56:59 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/27 18:28:06 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,6 @@ char	*ft_strchr(const char *src, int c)
 	if (c == 0)
 		return ((char *)(&src[i]));
 	return (0);
-}
-
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
-{
-	size_t	i;
-	int		flag;
-
-	i = 0;
-	flag = 0;
-	while (i < n && !flag)
-	{
-		*((unsigned char *)dst + i) = *((unsigned char *)src + i);
-		if (*((unsigned char *)src + i) == (unsigned char)c)
-			flag = 1;
-		i++;
-	}
-	if (flag)
-		return ((unsigned char *)dst + i);
-	else
-		return (0);
 }
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
@@ -108,7 +88,7 @@ char	*ft_strndup(const char *s1, size_t n)
 	res = (char *)malloc(sizeof(char) * (n + 1));
 	if (!res)
 		return (0);
-	ft_memccpy(res, s1, 0, n);
+	ft_memmove(res, s1, n);
 	res[n] = '\0';
 	return (res);
 }
