@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:25:54 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/24 20:55:31 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/26 23:28:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,32 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		return (0);
 }
 
+void	*ft_memmove(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (!dst && !src)
+		return (0);
+	if (dst <= src)
+	{
+		while (i < n)
+		{
+			*((char *)dst + i) = *((char *)src + i);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < n)
+		{
+			*((char *)dst + (n - i - 1)) = *((char *)src + (n - i - 1));
+			i++;
+		}
+	}
+	return (dst);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
@@ -69,8 +95,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	res = (char *)malloc(len1 + len2 + 1);
-	ft_memccpy(res, s1, 0, len1);
-	ft_memccpy(res + len1, s2, 0, len2);
+	ft_memmove(res, s1, len1);
+	ft_memmove(res + len1, s2, len2);
 	res[len1 + len2] = '\0';
 	return (res);
 }
