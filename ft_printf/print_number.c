@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 16:39:33 by nkim              #+#    #+#             */
-/*   Updated: 2021/09/24 16:00:14 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/24 20:57:43 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int print_un_decimal(unsigned int arg) {
   int un;
 
   un = arg;
-  if (un < 0)
-    un = arg | 0x7fffffff;
-
   cnt = ft_putunnbr(un);
   return cnt;
 }
@@ -37,8 +34,6 @@ int print_un_hex(unsigned int arg, char type) {
   char *base;
 
   un = arg;
-  if (un < 0)
-    un = arg | 0x7fffffff;
   if (type == 'X')
     base = "0123456789ABCDEF";
   else
