@@ -6,37 +6,51 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2021/08/13 15:58:37 by nkim             ###   ########.fr        #
+#    Updated: 2021/09/24 20:37:00 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
+SRC_DIR = .
+LIBFT = libft.a
+LIBFT_DIR = ./libft
+LIBFT_LIB = $(LIBFT_DIR)/$(LIBFT)
+INCS = .
+
+AFLAGS = rus
+
 CC = gcc
-AFLAGS = rcs
 CFLAGS = -Wall -Wextra -Werror
-SRCS = *.c
-SRC	=	ft_strlen.c
-OBJ	=	$(SRC:.c=.o)
-OBJECTS = $(OBJ)
+
+SRCS = ft_printf.c print_number.c print_string.c utils.c
+OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 clean :
-	rm -rf $(OBJ)
-
-test :
-	$(CC) $(CFLAGS) ft_printf.c -L $(NAME)
+	rm -rf $(OBJS)
+	make clean -C $(LIBFT_DIR)
 
 fclean : clean
 	rm -rf $(NAME)
+	make fclean -C $(LIBFT_DIR)
 
 re : fclean all
 
+$(NAME) : $(OBJS) $(LIBFT)
+	cp $(LIBFT_LIB) $@
+	ar $(AFLAGS) $@ $(OBJS)
 
-$(NAME) : $(OBJECTS)
-	ar $(AFLAGS) $@ $?
+# Libft
+$(LIBFT) : $(LIBFT_LIB)
+
+$(LIBFT_LIB) :
+	make -C $(LIBFT_DIR)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $?
-	
+
+test : $(NAME)
+	$(CC) main.c -L $(SRC_DIR) -l ftprintf
+
 .PHONY : all clean fclean re 

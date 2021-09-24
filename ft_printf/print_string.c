@@ -6,22 +6,27 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 15:48:31 by nkim              #+#    #+#             */
-/*   Updated: 2021/09/18 16:26:17 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/22 20:01:37 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_c(int arg) {
+int print_c(int arg) {
+  int cnt;
   char c;
 
   c = (char)arg;
-  ft_putchar_fd(c, 1);
+  cnt = write(1, &c, 1);
+  return cnt;
 }
 
-void print_s(char *arg) {
+int print_s(char *arg) {
+  int cnt;
   if (!arg)
-    ft_putstr_fd("(null)", 1);
+    cnt = write(1, "(null)", 6);
   else
-    ft_putstr_fd(arg, 1);
+    cnt = write(1, arg, ft_strlen(arg));
+
+  return cnt;
 }
