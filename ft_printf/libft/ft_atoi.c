@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 15:36:34 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/28 23:25:09 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:37:06 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_isspace(char c)
 {
-	if (c == ' ' || c == '\n' || c == '\t' ||
-		c == '\v' || c == '\f' || c == '\r')
+	if (c == ' ' || c == '\n' || c == '\t'
+		||c == '\v' || c == '\f' || c == '\r')
 		return (1);
 	else
 		return (0);
@@ -63,5 +63,5 @@ int	ft_atoi(const char *str)
 			return (detect_flow(is_minus));
 		res = tmp;
 	}
-	return (int)(is_minus * res);
+	return ((int)(is_minus * res));
 }

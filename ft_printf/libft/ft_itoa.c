@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 18:20:43 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/19 18:41:49 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:36:31 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ char	*ft_itoa(int n)
 	else
 		num = n;
 	len = get_int_len(num);
-	if (!(res = (char *)malloc(sizeof(char) * (len + is_minus + 1))))
+	res = (char *)malloc(sizeof(char) * (len + is_minus + 1));
+	if (!res)
 		return (0);
 	if (is_minus)
 		res[0] = '-';

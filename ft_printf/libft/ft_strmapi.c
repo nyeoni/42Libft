@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 02:36:02 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/19 19:14:17 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:32:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (0);
 	size = ft_strlen(s);
-	if (!(res = (char *)malloc(sizeof(char) * (size + 1))))
+	res = (char *)malloc(sizeof(char) * (size + 1));
+	if (!res)
 		return (0);
 	i = 0;
 	while (i < size)

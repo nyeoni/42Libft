@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:36:25 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/28 19:23:32 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 10:55:53 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	if (needle[0] == '\0')
-		return (char *)haystack;
+		return ((char *)haystack);
 	while (i < len && haystack[i])
 	{
 		if (haystack[i] == needle[0])
