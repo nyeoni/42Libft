@@ -6,20 +6,21 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 18:31:07 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/25 02:31:01 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:29:26 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		*get_string_cnt(char const *str, char c, int address_len)
+int	*get_string_cnt(char const *str, char c, int address_len)
 {
 	int	*result;
 	int	cnt;
 	int	i;
 
 	i = 0;
-	if (!(result = (int *)malloc(sizeof(int) * address_len)))
+	result = (int *)malloc(sizeof(int) * address_len);
+	if (!result)
 		return (0);
 	while (*str)
 	{
@@ -30,10 +31,7 @@ int		*get_string_cnt(char const *str, char c, int address_len)
 			str++;
 		}
 		if (cnt != 0)
-		{
-			result[i] = cnt;
-			i++;
-		}
+			result[i++] = cnt;
 		if (!(*str))
 			break ;
 		str++;
@@ -41,7 +39,7 @@ int		*get_string_cnt(char const *str, char c, int address_len)
 	return (result);
 }
 
-int		get_address_cnt(char const *str, char c)
+int	get_address_cnt(char const *str, char c)
 {
 	int	cnt;
 
@@ -114,18 +112,17 @@ char	**ft_split(char const *s, char c)
 	int		*string_len;
 	int		i;
 
-	if (!s)
-		return (0);
 	address_len = get_address_cnt(s, c);
 	string_len = get_string_cnt(s, c, address_len);
-	if (!string_len ||
-		!(result = (char **)malloc(sizeof(char *) * (address_len + 1))))
+	result = (char **)malloc(sizeof(char *) * (address_len + 1));
+	if (!string_len || !result)
 		return (0);
 	ft_memset(result, 0, sizeof(char *) * (address_len + 1));
 	i = 0 - 1;
 	while (++i < address_len && string_len[0])
 	{
-		if (!(result[i] = (char *)malloc(sizeof(char) * (string_len[i] + 1))))
+		result[i] = (char *)malloc(sizeof(char) * (string_len[i] + 1));
+		if (!result[i])
 		{
 			free_all(result, string_len);
 			return (0);

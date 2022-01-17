@@ -6,13 +6,13 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:20:26 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/28 23:26:57 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:33:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		get_first_index(char const *s1, char const *set)
+int	get_first_index(char const *s1, char const *set)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ int		get_first_index(char const *s1, char const *set)
 	return (-1);
 }
 
-int		get_last_index(char const *s1, char const *set)
+int	get_last_index(char const *s1, char const *set)
 {
 	int	i;
 	int	j;
@@ -71,12 +71,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	last = get_last_index(s1, set);
 	if (start == -1 || last == -1)
 	{
-		if (!(res = (char *)malloc(sizeof(char))))
+		res = (char *)malloc(sizeof(char));
+		if (!(res))
 			return (0);
 		res[0] = '\0';
 		return (res);
 	}
-	if (!(res = ft_calloc(last - start + 2, sizeof(char))))
+	res = ft_calloc(last - start + 2, sizeof(char));
+	if (!(res))
 		return (0);
 	i = 0 - 1;
 	while (start + (++i) <= last)

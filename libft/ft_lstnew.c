@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 02:49:19 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/19 19:07:08 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 10:58:48 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*res;
 
-	if (!(res = (t_list *)malloc(sizeof(t_list))))
+	res = (t_list *)malloc(sizeof(t_list));
+	if (!res)
 		return (0);
 	res->content = content;
 	res->next = NULL;

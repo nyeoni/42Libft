@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:00:36 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/04 20:05:18 by nkim             ###   ########.fr       */
+/*   Updated: 2021/07/05 17:17:50 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-//** ver 1.0
+// ** ver 1.0
 // char	*ft_strjoin(char const *s1, char const *s2)
 // {
 // 	size_t	len;

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 21:17:03 by nkim              #+#    #+#             */
-/*   Updated: 2021/06/19 19:12:53 by nkim             ###   ########.fr       */
+/*   Updated: 2021/09/25 11:34:36 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strdup(const char *s1)
 	char	*res;
 
 	size = ft_strlen(s1);
-	if (!(res = malloc(size + 1)))
+	res = malloc(size + 1);
+	if (!(res))
 		return (0);
 	size = 0;
 	while (s1[size])
