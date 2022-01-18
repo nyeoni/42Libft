@@ -9,3 +9,4 @@ a.out
 .idea
 born2beroot/*
 ./.vscode/*
+*.o
