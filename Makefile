@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft42.a
-INCLUDES_DIR = includes
+INCLUDES_DIR = include
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
