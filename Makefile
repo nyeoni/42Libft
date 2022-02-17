@@ -6,11 +6,11 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2021/09/25 11:40:00 by nkim             ###   ########.fr        #
+#    Updated: 2022/02/17 17:32:27 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft42.a
+NAME = libft.a
 INCLUDES_DIR = include
 
 CC = gcc
