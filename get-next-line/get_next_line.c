@@ -1,12 +1,12 @@
-/*************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:42:11 by nkim              #+#    #+#             */
-/*   Updated: 2021/07/27 05:52:20 by nkim             ###   ########.fr       */
+/*   Created: 2022/09/09 19:35:10 by nkim              #+#    #+#             */
+/*   Updated: 2022/09/09 19:35:15 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	*ft_memset(void *dst, int value, size_t n)
 }
 
 void	manage_line(char **file_rest,
-	t_gnl_manager *gnl_m, int r_bytes)
+					t_gnl_manager *gnl_m,
+					int r_bytes)
 {
 	char	*next_sp;
 	char	*tmp;
@@ -68,8 +69,7 @@ void	init_gnl_manager(t_gnl_manager *gnl_m, int fd)
 		tmp = gnl_m->file_rest;
 		gnl_m->file_rest = (char **)malloc(sizeof(char *) * (fd + 1));
 		ft_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
-		ft_memmove(gnl_m->file_rest, tmp,
-			sizeof(char *) * (gnl_m->max_fd + 1));
+		ft_memmove(gnl_m->file_rest, tmp, sizeof(char *) * (gnl_m->max_fd + 1));
 		free(tmp);
 		tmp = NULL;
 		gnl_m->max_fd = fd;
