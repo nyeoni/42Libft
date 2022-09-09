@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2021/09/24 20:33:55 by nkim             ###   ########.fr        #
+#    Updated: 2022/09/09 18:24:56 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
 		ft_putendl_fd.c ft_putnbr_fd.c\
 		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\
-		ft_lstmap.c
+		ft_lstmap.c ft_ptrrealloc.c ft_realloc.c
 OBJ	=	$(SRC:.c=.o)
 
 all : $(NAME)
@@ -44,5 +44,5 @@ $(NAME) : $(OBJ)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $?
-	
+
 .PHONY : all clean fclean re

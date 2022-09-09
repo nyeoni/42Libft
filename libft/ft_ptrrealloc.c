@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_ptrrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:34:04 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/22 16:11:50 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/22 20:33:43 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/22 20:35:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_ptrrealloc(void *buf, int before_size, int after_size)
 {
-	int		i;
-	char	*src;
-	char	*dst;
+	int		idx;
+	char	**src;
+	char	**dst;
 
-	i = 0;
-	src = (char *)ptr;
-	dst = (char *)malloc(size);
-	while (src[i])
+	src = (char **)buf;
+	dst = (char **)malloc(sizeof(char *) * after_size);
+	idx = 0;
+	while (idx < before_size)
 	{
-		dst[i] = src[i];
-		i++;
+		dst[idx] = src[idx];
+		idx++;
 	}
-	free(ptr);
+	free(buf);
 	return ((void *)dst);
 }
