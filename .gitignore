@@ -10,3 +10,4 @@ a.out
 born2beroot/*
 ./.vscode/*
 *.o
+*.a
