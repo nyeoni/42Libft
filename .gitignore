@@ -11,3 +11,4 @@ born2beroot/*
 ./.vscode/*
 *.o
 *.a
+libft.a
