@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 16:39:33 by nkim              #+#    #+#             */
-/*   Updated: 2021/09/25 10:50:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/09/16 13:01:44 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ int	print_un_decimal(unsigned int arg)
 
 int	print_un_hex(unsigned int arg, char type)
 {
-	int			cnt;
-	signed int	un;
-	char		*base;
+	int		cnt;
+	char	*base;
 
-	un = arg;
 	if (type == 'X')
 		base = "0123456789ABCDEF";
 	else
