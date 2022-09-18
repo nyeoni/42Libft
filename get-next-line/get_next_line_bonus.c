@@ -6,13 +6,13 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:42:11 by nkim              #+#    #+#             */
-/*   Updated: 2022/09/09 19:33:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/09/18 20:23:10 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-void	*ft_memset(void *dst, int value, size_t n)
+void	*gnl_memset(void *dst, int value, size_t n)
 {
 	size_t	i;
 
@@ -33,7 +33,7 @@ void	manage_line(char **file_rest,
 	char	*tmp;
 	int		i;
 
-	next_sp = ft_strchr(gnl_m->line, '\n');
+	next_sp = gnl_strchr(gnl_m->line, '\n');
 	if (r_bytes == -1 || (r_bytes == 0 && !next_sp))
 	{
 		i = 0;
@@ -47,9 +47,9 @@ void	manage_line(char **file_rest,
 	}
 	if (next_sp && *(next_sp + 1))
 	{
-		*file_rest = ft_strndup(next_sp + 1, ft_strlen(next_sp + 1));
+		*file_rest = gnl_strndup(next_sp + 1, gnl_strlen(next_sp + 1));
 		tmp = gnl_m->line;
-		gnl_m->line = ft_strndup(gnl_m->line, next_sp - gnl_m->line + 1);
+		gnl_m->line = gnl_strndup(gnl_m->line, next_sp - gnl_m->line + 1);
 		free(tmp);
 	}
 }
@@ -61,15 +61,15 @@ void	init_gnl_manager(t_gnl_manager *gnl_m, int fd)
 	if (!gnl_m->file_rest)
 	{
 		gnl_m->file_rest = (char **)malloc(sizeof(char *) * (fd + 1));
-		ft_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
+		gnl_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
 		gnl_m->max_fd = fd;
 	}
 	else if (fd > gnl_m->max_fd)
 	{
 		tmp = gnl_m->file_rest;
 		gnl_m->file_rest = (char **)malloc(sizeof(char *) * (fd + 1));
-		ft_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
-		ft_memmove(gnl_m->file_rest, tmp, sizeof(char *) * (gnl_m->max_fd + 1));
+		gnl_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
+		gnl_memmove(gnl_m->file_rest, tmp, sizeof(char *) * (gnl_m->max_fd + 1));
 		free(tmp);
 		tmp = NULL;
 		gnl_m->max_fd = fd;
@@ -84,13 +84,13 @@ char	*init_all(char *buf, t_gnl_manager *fm, int fd)
 	init_gnl_manager(fm, fd);
 	if ((fm->file_rest)[fd])
 	{
-		tmp = ft_strndup((fm->file_rest)[fd], ft_strlen((fm->file_rest)[fd]));
+		tmp = gnl_strndup((fm->file_rest)[fd], gnl_strlen((fm->file_rest)[fd]));
 		free((fm->file_rest)[fd]);
 		(fm->file_rest)[fd] = NULL;
 	}
 	else
-		tmp = ft_strndup("", 0);
-	line = ft_strjoin(tmp, buf);
+		tmp = gnl_strndup("", 0);
+	line = gnl_strjoin(tmp, buf);
 	free(tmp);
 	return (line);
 }
@@ -102,17 +102,17 @@ char	*get_next_line(int fd)
 	char					*tmp;
 	int						r_bytes;
 
-	ft_memset(buffer, 0, BUFFER_SIZE + 1);
+	gnl_memset(buffer, 0, BUFFER_SIZE + 1);
 	r_bytes = read(fd, buffer, BUFFER_SIZE);
 	if (fd < 0 || BUFFER_SIZE <= 0 || r_bytes == -1)
 		return (0);
 	gnl_m.line = init_all(buffer, &gnl_m, fd);
-	while (!(ft_strchr(gnl_m.line, '\n')) && r_bytes > 0)
+	while (!(gnl_strchr(gnl_m.line, '\n')) && r_bytes > 0)
 	{
-		ft_memset(buffer, 0, BUFFER_SIZE + 1);
+		gnl_memset(buffer, 0, BUFFER_SIZE + 1);
 		r_bytes = read(fd, buffer, BUFFER_SIZE);
 		tmp = gnl_m.line;
-		gnl_m.line = ft_strjoin(gnl_m.line, buffer);
+		gnl_m.line = gnl_strjoin(gnl_m.line, buffer);
 		free(tmp);
 	}
 	manage_line(&(gnl_m.file_rest)[fd], &gnl_m, r_bytes);
