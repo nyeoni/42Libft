@@ -6,15 +6,15 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:27:21 by nkim              #+#    #+#             */
-/*   Updated: 2022/01/18 15:29:03 by nkim             ###   ########.fr       */
+/*   Updated: 2022/09/18 22:31:41 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT42_H
 # define LIBFT42_H
 
-# include "libft.h"
-# include "get_next_line.h"
 # include "ft_printf.h"
+# include "gnl.h"
+# include "libft.h"
 
 #endif
