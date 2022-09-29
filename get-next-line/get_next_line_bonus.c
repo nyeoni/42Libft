@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:42:11 by nkim              #+#    #+#             */
-/*   Updated: 2022/09/18 20:23:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/09/29 21:23:54 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	init_gnl_manager(t_gnl_manager *gnl_m, int fd)
 		tmp = gnl_m->file_rest;
 		gnl_m->file_rest = (char **)malloc(sizeof(char *) * (fd + 1));
 		gnl_memset(gnl_m->file_rest, 0, sizeof(char *) * (fd + 1));
-		gnl_memmove(gnl_m->file_rest, tmp, sizeof(char *) * (gnl_m->max_fd + 1));
+		gnl_memmove(gnl_m->file_rest, tmp, \
+			sizeof(char *) * (gnl_m->max_fd + 1));
 		free(tmp);
 		tmp = NULL;
 		gnl_m->max_fd = fd;
