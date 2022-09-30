@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 17:20:26 by nkim              #+#    #+#             */
-/*   Updated: 2021/09/25 11:33:27 by nkim             ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:28 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_last_index(char const *s1, char const *set)
 	int	flag;
 
 	i = (int)ft_strlen(s1) - 1;
-	while (s1[i] && i > 0)
+	while (i >= 0 && s1[i])
 	{
 		flag = 0;
 		j = 0 - 1;
